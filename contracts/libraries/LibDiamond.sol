@@ -47,6 +47,19 @@ library LibDiamond {
         mapping(bytes4 => bool) supportedInterfaces;
         // owner of the contract
         address contractOwner;
+
+        // ERC721 Storage
+        mapping(uint => address) internal _ownerOf;
+        mapping(address => uint) internal _balanceOf;
+
+        // Merkle storage
+        bytes32 merkleRoot;
+        mapping(address => bool) hasClaimed;
+
+         // Presale storage
+        bool presaleActive;
+        uint256 presalePrice; // Price in wei
+        uint256 maxPresaleMintsPerTx;
     }
 
     function diamondStorage()
